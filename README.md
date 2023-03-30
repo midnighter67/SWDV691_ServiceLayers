@@ -12,6 +12,5 @@
     This repository contains the following service layer files 
     - service layer design documents
     - database model files
-    - template files which contain html and css used to enter and display data
     - url files used to route data to and from the templates
     - view files which contain the business logic
