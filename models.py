@@ -54,18 +54,6 @@ class Consumer(models.Model):
         return self.first + " " + self.last
     
 
-class Rating(models.Model):
-    provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
-    user = models.ForeignKey(Consumer, on_delete=models.CASCADE)
-    title = models.CharField(max_length=30, blank=True)
-    rating = models.FloatField(default=1)
-    text = models.CharField(max_length=1000, blank=True)
-    created = models.DateField(auto_now=True)
-
-    def __str__(self):
-        return self.provider + ":  " + self.title
-
-
 class Review(models.Model):
     provider = models.IntegerField(null=True)
     consumer = models.IntegerField(null=True)
@@ -76,42 +64,14 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
-
-
-
-"""
-class Category(models.Model):
-    name = models.CharField(max_length=50)
-
-    class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
-"""
-"""
-1 - cleaning
-2 - plumbing
-3 - electrical
-4 - improvement
-5 - landscape
-"""
-"""
-class Classification(models.Model):
-    provider_id = models.ForeignKey(Provider, default=-1, on_delete=models.CASCADE)
-    category_id = models.ForeignKey(Category, default=-1, on_delete=models.CASCADE)
-"""
-
-
-
-
-"""
-
+    
 class Reply(models.Model):
-    reply_id = models.BigAutoField(primary_key=True)
-    rating_id = models.ForeignKey(Review, on_delete=models.CASCADE)
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
     text = models.CharField(max_length=1000, default="")
 
     class Meta:
         verbose_name = 'Reply'
         verbose_name_plural = 'Replies'
 
-"""
+
+
